@@ -6,10 +6,7 @@
 
 tidy_specpen_data <- function(path = './Data/spectrapen and ASD data_from_Costanza/Spectrapen/Spectrapen/week_2/beech_pp_VIS_week2.csv'
 ){
-  
-  df <- bind_rows(lapply(2:(ncol(data)-1), function(x){
-    # the date and time element
-    Time <- read.csv(path, 
+  Time <- read.csv(path, 
                      sep = "", header = F, fill = T, skip = 1, nrows = 1)
     # the spectral data
     data <- read.csv(path, 
@@ -19,6 +16,10 @@ tidy_specpen_data <- function(path = './Data/spectrapen and ASD data_from_Costan
     # take time observations
     time_seq <- seq(from = 3, to =(length(Time)), by = 2)
     
+  df <- bind_rows(lapply(2:(ncol(data)-1), function(x){
+    # the date and time element
+   
+  
     # create new data frame
     df <- data.frame(ID = str_sub(strsplit(path, split = '/')[[1]][6], 0,-5),
                      week = strsplit(path, split = '/')[[1]][5],
