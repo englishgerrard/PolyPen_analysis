@@ -26,7 +26,8 @@ tidy_specpen_data <- function(path = './Data/spectrapen and ASD data_from_Costan
                      date = Time[,c(date_seq)][[x]],
                      time = Time[,c(time_seq)][[x]],
                      nm = data[,1],
-                     refl = data[,x])
+                     refl = data[,x],
+                     rep = x)
     # return this data frame to the larger function
     return(df)
   }
