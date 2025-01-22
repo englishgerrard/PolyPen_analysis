@@ -18,10 +18,15 @@ df1 <- data.frame(ID = str_sub(strsplit(spec.csv[1], split = '/')[[1]][6], 0,-5)
 )
 # the remaing files are tidied and combined with the first 
 df <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data), df1)
-# then both combined
 
 
+# get device
+# takes ages to run - should adress this.. put earlier in functions?
+# df$device <- sapply(1:29184, function(x){strsplit(df$ID, split = '_')[[x]][3]})
 
-ggplot(filter(df,nm >400), aes( x = nm, y = refl, colour = as.factor(rep)))+
+
+write.csv(df, './Data/tidy_spectrapen.csv')
+
+ggplot(filter(df, device == 'NIR' & nm > 400), aes( x = nm, y = refl, colour = as.factor(rep)))+
   geom_line() +
   facet_wrap(~week)
