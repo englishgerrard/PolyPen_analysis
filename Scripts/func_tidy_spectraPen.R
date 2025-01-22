@@ -16,7 +16,7 @@ tidy_specpen_data <- function(path = './Data/spectrapen and ASD data_from_Costan
     # take time observations
     time_seq <- seq(from = 3, to =(length(Time)), by = 2)
     
-  df <- bind_rows(lapply(2:(ncol(data)-1), function(x){
+  df <- bind_rows(lapply(2:(ncol(data)), function(x){
     # the date and time element
    
   
