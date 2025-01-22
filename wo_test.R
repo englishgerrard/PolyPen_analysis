@@ -21,7 +21,6 @@ df <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data), df1)
 # then both combined
 
 
-
 ggplot(filter(df,nm >400), aes( x = nm, y = refl, colour = as.factor(rep)))+
   geom_line() +
   facet_wrap(~week)
