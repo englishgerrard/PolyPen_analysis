@@ -21,7 +21,7 @@ df2 <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data))
 df <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data), df1)
 
 
-# get device
+# get device 
 # takes ages to run - should adress this.. put earlier in functions?
 # df$device <- sapply(1:29184, function(x){strsplit(df$ID, split = '_')[[x]][3]})
 
