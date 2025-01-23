@@ -14,7 +14,7 @@ df1 <- data.frame(ID = str_sub(strsplit(spec.csv[1], split = '/')[[1]][6], 0,-5)
                   time = sapply(1:15, function(x){strsplit(as.character(unname(f1[1,-c(1,17)])), split = ' ')[[x]][2]}),
                   nm = as.numeric(f1$Transmitance[-c(1:4)]),
                   refl = as.numeric(bind_rows(lapply(2:16, function(x){data.frame(r = f1[,x][-c(1:4)])}))$r),
-                  rep = rep(1:15, each=256)
+                  rep = rep(2:16, each=256)
 )
 # the remaing files are tidied and combined with the first 
 df2 <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data))
@@ -28,6 +28,6 @@ df <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data), df1)
 
 write.csv(df, './Data/tidy_spectrapen.csv')
 
-ggplot(df2, aes( x = nm, y = refl, colour = as.factor(rep)))+
+ggplot(df, aes( x = nm, y = refl, colour = as.factor(rep)))+
   geom_line() +
   facet_wrap(~week)
