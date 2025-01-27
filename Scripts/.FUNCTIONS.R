@@ -14,5 +14,5 @@ interpolate <- function(x){
                    refl = approx(x = a$nm, y = a$refl,
                                  xout = c(nm_seq))$y)
   df <-  df %>%
-    separate(ID, c('tree', 'device', 'range', 'week', 'rep'), '_', remove = F)
+    separate(ID, c('tree', 'device', 'sensor', 'week', 'rep'), '_', remove = F)
   return(df)}
