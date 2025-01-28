@@ -23,11 +23,11 @@ tidy_specpen_data <- function(path = './Data/spectrapen and ASD data_from_Costan
     # create new data frame
     df <- data.frame(ID = str_sub(strsplit(path, split = '/')[[1]][6], 0,-5),
                      week = strsplit(path, split = '/')[[1]][5],
-                     date = Time[,c(date_seq)][[x]],
-                     time = Time[,c(time_seq)][[x]],
+                     date = Time[,c(date_seq)][[(x-1)]],
+                     time = Time[,c(time_seq)][[(x-1)]],
                      nm = data[,1],
                      refl = data[,x],
-                     rep = x)
+                     rep = (x-1))
     # return this data frame to the larger function
     return(df)
   }

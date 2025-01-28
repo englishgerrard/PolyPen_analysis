@@ -3,13 +3,6 @@ source('./Scripts/.FUNCTIONS.R')
 
 pp <- read.csv('./Data/tidy_spectrapen.csv') 
 
-# adjust rep for poly pen and add treatment coloum
-pp$rep <- pp$rep-1
-pp <- add_treatment(pp)
-pp$sensor <- 'PP'
-
-pp$ID <- paste0(pp$ID,'_',pp$rep)
-
 pp_v <- pp %>% filter(device == 'VIS')
 
 interpolated_df <- pp_v %>%

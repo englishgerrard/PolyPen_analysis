@@ -20,6 +20,12 @@ df1 <- data.frame(ID = str_sub(strsplit(spec.csv[1], split = '/')[[1]][6], 0,-5)
 df2 <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data))
 df <- bind_rows(lapply(spec.csv[2:8], tidy_specpen_data), df1)
 
+df <- add_treatment(df)
+df$sensor <- 'df'
+df$ID <- paste0(df$ID,'_',df$rep)
+df$device <- str_split_i(df$ID, '_', i = 3)
+
+
 
 # get device 
 # takes ages to run - should adress this.. put earlier in functions?
